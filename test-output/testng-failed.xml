@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test thread-count="5" name="Default test(failed)">
+    <classes>
+      <class name="twc.Automation.SmokeTestCases.smokeTestCases">
+        <methods>
+          <include name="Smoke_Test_CaseVerify_seasonalhub_feed_adcall"/>
+          <include name="Smoke_Test_Verify_News_hurricane_detail_adcall_iu"/>
+          <include name="Smoke_Test_Verify_amazon_aax_Running_Bigbanner_ad"/>
+          <include name="Smoke_Test_Verify_snapshotcard_adcall_iu"/>
+          <include name="Smoke_Test_CaseVerify_news_aax_amazon_adcalll"/>
+          <include name="Smoke_Test_Case_Verify_Video_adCalll"/>
+          <include name="Smoke_Test_Verify_News_detailpage_adcall_iu"/>
+          <include name="Smoke_Test_Verify_daily_card_adcall_iu"/>
+          <include name="Smoke_Test_Verify_health_and_activities_Allergy_detailpage_adcall_iu"/>
+          <include name="Smoke_Test_Verify_health_and_activities_Running_spotlight_adcall_iu"/>
+          <include name="Smoke_Test_CaseVerify_AQ_aax_amazon_adcalll"/>
+          <include name="Smoke_Test_amazon_aax_today_deatailcard"/>
+          <include name="Smoke_Test_CaseVerify_Health_Activities_feed_adcall"/>
+          <include name="Smoke_Test_CaseVerify_Radar_Maps_deatailscard_adcall"/>
+          <include name="Smoke_Test_Verify_health_and_activities_Air_Quality_detailpage_adcall_iu"/>
+          <include name="After_Test"/>
+          <include name="Before_Test"/>
+          <include name="Smoke_Test_CaseVerify_Radar_Maps_feedcard_adcall"/>
+          <include name="Smoke_Test_Verify_health_and_activities_cold_flu_Spotlight_adcall_iu"/>
+          <include name="Smoke_Test_Verify_hourly_detailpage_adcall_iu"/>
+          <include name="Smoke_Test_Verify_snapshot_spotlight_adcall_iu"/>
+          <include name="Smoke_Test_CaseVerify_hurricane_detal_aax_adcalll"/>
+          <include name="Smoke_Test_Verify_health_and_activities_Bot_beach_detailpage_adcall_iu"/>
+        </methods>
+      </class> <!-- twc.Automation.SmokeTestCases.smokeTestCases -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

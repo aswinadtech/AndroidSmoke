@@ -1,0 +1,390 @@
+{
+  "time" : {
+    "start" : 1567362659937,
+    "stop" : 1567362659993,
+    "duration" : 56
+  },
+  "testSuites" : [ {
+    "uid" : "eb01338494ac13e4",
+    "name" : "Suite : Test",
+    "title" : "Suite : Test",
+    "time" : {
+      "start" : 1567362659937,
+      "stop" : 1567362659993,
+      "duration" : 56
+    },
+    "statistic" : {
+      "total" : 33,
+      "passed" : 0,
+      "pending" : 0,
+      "canceled" : 32,
+      "failed" : 0,
+      "broken" : 1
+    },
+    "description" : null,
+    "testCases" : [ {
+      "uid" : "da559b48ce152a25",
+      "name" : "Before_Test",
+      "title" : "Before test",
+      "time" : {
+        "start" : 1567362659937,
+        "stop" : 1567362659940,
+        "duration" : 3
+      },
+      "severity" : "NORMAL",
+      "status" : "BROKEN"
+    }, {
+      "uid" : "5c39a18b702cc208",
+      "name" : "Smoke_Test_amazon_aax_home_screen_today_preload_adcall__iu",
+      "title" : "Verifying amazon aax home screen today preload ad call",
+      "time" : {
+        "start" : 1567362659963,
+        "stop" : 1567362659965,
+        "duration" : 2
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "519de6094fd4fa52",
+      "name" : "Smoke_Test_amazon_aax_rader_card_preload_adcall",
+      "title" : "Verifying amazon aax home screen today preload ad call",
+      "time" : {
+        "start" : 1567362659965,
+        "stop" : 1567362659966,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "7c388074bdf231a9",
+      "name" : "Smoke_Test_amazon_aax_AQ_card_preload_adcall",
+      "title" : "Verifying amazon aax Air Quality preload ad call",
+      "time" : {
+        "start" : 1567362659967,
+        "stop" : 1567362659967,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "e1697fdae4674051",
+      "name" : "Smoke_Test_amazon_aax_Hourly_preload_adcall",
+      "title" : "Verifying amazon aax Hourly  preload ad call",
+      "time" : {
+        "start" : 1567362659968,
+        "stop" : 1567362659968,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "d91537c8c8da849",
+      "name" : "Smoke_Test_amazon_aax_Daily_preload_adcall",
+      "title" : "Verifying amazon aax daily preload ad call",
+      "time" : {
+        "start" : 1567362659969,
+        "stop" : 1567362659969,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "a84f54aa1aba8ae5",
+      "name" : "Smoke_Test_amazon_aax_mapsdetails_preload_adcall",
+      "title" : "Verifying amazon aax maps preload ad call",
+      "time" : {
+        "start" : 1567362659970,
+        "stop" : 1567362659970,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "c04007d79e73a639",
+      "name" : "Smoke_Test_CaseVerify_Homescreen_ad_iu",
+      "title" : "Verifying iu value for Home screen",
+      "time" : {
+        "start" : 1567362659971,
+        "stop" : 1567362659971,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "29c6b15d24704bd5",
+      "name" : "Smoke_Test_CaseVerify_WeatherFXAPI_url",
+      "title" : "Verifying wfxtg triggere call url",
+      "time" : {
+        "start" : 1567362659972,
+        "stop" : 1567362659972,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "5783135e27fc95bf",
+      "name" : "Smoke_Test_CaseVerify_turbo_url",
+      "title" : "Verifying api weather call url",
+      "time" : {
+        "start" : 1567362659972,
+        "stop" : 1567362659973,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "3e16e8427c784a2d",
+      "name" : "Smoke_Test_CaseVerify_adcrwdcntrlnet_url",
+      "title" : "Verifying Lotame ad.crwdcntrl.net url",
+      "time" : {
+        "start" : 1567362659973,
+        "stop" : 1567362659974,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "263e147bd81392ad",
+      "name" : "Smoke_Test_Case_Verify_Video_adCalll",
+      "title" : "Verifying Video ad call",
+      "time" : {
+        "start" : 1567362659974,
+        "stop" : 1567362659975,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "a1f660efff3b4144",
+      "name" : "Smoke_Test_CaseVerify_Radar_Maps_feedcard_adcall",
+      "title" : "Verifying iu value for Radar&Maps feed card ",
+      "time" : {
+        "start" : 1567362659975,
+        "stop" : 1567362659976,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "3edc726597cd2b04",
+      "name" : "Smoke_Test_CaseVerify_Radar_Maps_deatailscard_adcall",
+      "title" : "Verifying iu value for Radar&Maps details card",
+      "time" : {
+        "start" : 1567362659976,
+        "stop" : 1567362659976,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "951ddae4d2b11e43",
+      "name" : "Smoke_Test_amazon_aax_today_deatailcard",
+      "title" : "Verifying amazon aax for today details card",
+      "time" : {
+        "start" : 1567362659977,
+        "stop" : 1567362659977,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "85de9711bd3f9ab",
+      "name" : "Smoke_Test_CaseVerify_Health_Activities_feed_adcall",
+      "title" : "Verifying iu value Health&Activities feed card ",
+      "time" : {
+        "start" : 1567362659977,
+        "stop" : 1567362659978,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "a645e8db3892a33a",
+      "name" : "Smoke_Test_Verify_health_and_activities_Running_spotlight_adcall_iu",
+      "title" : "Smoke test verify health and activities running spotlight adcall iu",
+      "time" : {
+        "start" : 1567362659978,
+        "stop" : 1567362659979,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "3c04bbc134f1ee",
+      "name" : "Smoke_Test_Verify_health_and_activities_Bot_beach_detailpage_adcall_iu",
+      "title" : "Verifying iu value for health and activities Bot&beach Spotlight ad call iu",
+      "time" : {
+        "start" : 1567362659979,
+        "stop" : 1567362659980,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "91ee66acd51e680e",
+      "name" : "Smoke_Test_Verify_health_and_activities_Allergy_detailpage_adcall_iu",
+      "title" : "Verifying iu value for health and activities Allergy Spot light ad call iu",
+      "time" : {
+        "start" : 1567362659980,
+        "stop" : 1567362659980,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "4e4e3f75e1a048dc",
+      "name" : "Smoke_Test_Verify_health_and_activities_cold_flu_Spotlight_adcall_iu",
+      "title" : "Verifying iu value for health and activities cold&Flu Spotlight ad call iu",
+      "time" : {
+        "start" : 1567362659981,
+        "stop" : 1567362659981,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "3b37fed6b371c45d",
+      "name" : "Smoke_Test_Verify_amazon_aax_Running_Bigbanner_ad",
+      "title" : "Verifying amazon axx slot for Running Bigbanner ad",
+      "time" : {
+        "start" : 1567362659982,
+        "stop" : 1567362659982,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "3bf319b8d4a5dd9f",
+      "name" : "Smoke_Test_CaseVerify_seasonalhub_feed_adcall",
+      "title" : "Verifying iu value seasonal hub  feed card ",
+      "time" : {
+        "start" : 1567362659983,
+        "stop" : 1567362659983,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "6a09912d16074149",
+      "name" : "Smoke_Test_Verify_health_and_activities_Air_Quality_detailpage_adcall_iu",
+      "title" : "Verifying iu value for  Air Quality detailpage ad call iu",
+      "time" : {
+        "start" : 1567362659983,
+        "stop" : 1567362659984,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "e615195dee058b98",
+      "name" : "Smoke_Test_Verify_News_detailpage_adcall_iu",
+      "title" : "Verifying iu value for news detailpage ad call iu",
+      "time" : {
+        "start" : 1567362659984,
+        "stop" : 1567362659985,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "1e335b2aafa4a825",
+      "name" : "Smoke_Test_Verify_News_hurricane_detail_adcall_iu",
+      "title" : "Verifying iu value for news detailpage ad call iu",
+      "time" : {
+        "start" : 1567362659985,
+        "stop" : 1567362659986,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "777c642823eddd00",
+      "name" : "Smoke_Test_Verify_daily_card_adcall_iu",
+      "title" : "Verifying iu value for daily card ad call iu",
+      "time" : {
+        "start" : 1567362659986,
+        "stop" : 1567362659986,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "e484b341f54e0a7a",
+      "name" : "Smoke_Test_CaseVerify_AQ_aax_amazon_adcalll",
+      "title" : "Verifying AQ aax call",
+      "time" : {
+        "start" : 1567362659987,
+        "stop" : 1567362659987,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "c33100e40eb175ca",
+      "name" : "Smoke_Test_CaseVerify_news_aax_amazon_adcalll",
+      "title" : "Verifying news aax call",
+      "time" : {
+        "start" : 1567362659987,
+        "stop" : 1567362659988,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "68084fe4dc052f3d",
+      "name" : "Smoke_Test_Verify_hourly_detailpage_adcall_iu",
+      "title" : "Verifying ysoriu value for news detailpage ad call iu",
+      "time" : {
+        "start" : 1567362659988,
+        "stop" : 1567362659989,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "76f8dfe914b1d952",
+      "name" : "Smoke_Test_CaseVerify_hurricane_detal_aax_adcalll",
+      "title" : "Verifying news aax call",
+      "time" : {
+        "start" : 1567362659989,
+        "stop" : 1567362659989,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "fa313380ae004fe6",
+      "name" : "Smoke_Test_Verify_snapshotcard_adcall_iu",
+      "title" : "Verifying iu value for snapshot ad call iu",
+      "time" : {
+        "start" : 1567362659990,
+        "stop" : 1567362659990,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "46f30303f5fac606",
+      "name" : "Smoke_Test_Verify_snapshot_spotlight_adcall_iu",
+      "title" : "Verifying iu value for snapshot ad call iu",
+      "time" : {
+        "start" : 1567362659991,
+        "stop" : 1567362659991,
+        "duration" : 0
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    }, {
+      "uid" : "4c8cdfc1e9c6454b",
+      "name" : "After_Test",
+      "title" : "After test",
+      "time" : {
+        "start" : 1567362659992,
+        "stop" : 1567362659993,
+        "duration" : 1
+      },
+      "severity" : "NORMAL",
+      "status" : "CANCELED"
+    } ]
+  } ]
+}

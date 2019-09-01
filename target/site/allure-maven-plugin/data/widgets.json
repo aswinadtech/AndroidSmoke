@@ -1,0 +1,59 @@
+{
+  "hash" : "e7105c43ada45c9f6e0006854ef1a1d95249231d",
+  "plugins" : {
+    "total" : {
+      "statistic" : {
+        "total" : 33,
+        "passed" : 0,
+        "pending" : 0,
+        "canceled" : 32,
+        "failed" : 0,
+        "broken" : 1
+      },
+      "time" : {
+        "start" : 1567362659937,
+        "stop" : 1567362659993,
+        "duration" : 56
+      }
+    },
+    "defects" : {
+      "totalCount" : 1,
+      "items" : [ {
+        "count" : 1,
+        "uid" : "9ee6e1837e2289b",
+        "message" : "WebDriverException: An unknown server-side error occurred while processing the command. Original error: JAVA_HOME is not set currently. Please set JAVA_HOME. (WARNING: The server did not provide any stacktrace information)\nCommand duration or timeout: 5.55 seconds\nBuild info: version: '2.51.0', revision: '1af067dbcaedd7d2ab9af5151fc471d363d97193', time: '2016-02-05 11:20:57'\nSystem info: host: 'Aswinikumars-MacBook-Pro.local', ip: '192.168.1.101', os.name: 'Mac OS X', os.arch: 'x86_64', os.version: '10.14.5', java.version: '1.8.0_181'\nDriver info: io.appium.java_client.android.AndroidDriver",
+        "status" : "BROKEN"
+      } ]
+    },
+    "xunit" : {
+      "totalCount" : 1,
+      "items" : [ {
+        "uid" : "eb01338494ac13e4",
+        "title" : "Suite : Test",
+        "statistic" : {
+          "total" : 33,
+          "passed" : 0,
+          "pending" : 0,
+          "canceled" : 32,
+          "failed" : 0,
+          "broken" : 1
+        }
+      } ]
+    },
+    "behaviors" : {
+      "totalCount" : 1,
+      "items" : [ {
+        "title" : "Without feature",
+        "statistic" : {
+          "total" : 33,
+          "passed" : 0,
+          "pending" : 0,
+          "canceled" : 32,
+          "failed" : 0,
+          "broken" : 1
+        }
+      } ]
+    },
+    "environment" : [ ]
+  }
+}
