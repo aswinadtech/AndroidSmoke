@@ -2,8 +2,14 @@ package twc.Automation.HandleWithAppium;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
 import java.net.URL;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -21,8 +27,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+
+
 import twc.Automation.Driver.Drivers;
 import twc.Automation.ReadDataFromFile.read_excel_data;
+import twc.Automation.SmokeTestCases.smokeTestCases;
 import twc.Automation.General.DeviceStatus;
 import twc.Automation.General.Functions;
 
@@ -37,6 +46,10 @@ public class AppiumFunctions extends Drivers{
 	static int adCard = 1;
 	static MobileElement globalcurrentCard = null;
 	static MobileElement globalprevCard = null;
+	public static String current_IPAddress = null;
+	public static String defaultPortNumber = "8222";
+	private static AppiumServiceBuilder builder;
+	private static  AppiumDriverLocalService service;
 	public static void Swipe_Up() throws Exception{
 		Thread.sleep(2000);
 		Dimension dimensions = Ad.manage().window().getSize();
@@ -61,7 +74,10 @@ public class AppiumFunctions extends Drivers{
 	}
 	
 	public static void UnInstallApp() throws Exception{
-		Runtime.getRuntime().exec("/bin/bash -c adb uninstall com.weather.Weather");
+		
+		
+		String[] str1 = {"aswinikumar","adb uninstall com.weather.Weather"};
+		Process p1 = Runtime.getRuntime().exec(str1);
 	
 	}
 	
@@ -119,12 +135,10 @@ public class AppiumFunctions extends Drivers{
 		}
 	}
 	
-	public static void AppiumServerStart() throws InterruptedException, Exception{
+	public static void AppiumServerStart() throws InterruptedException{
 		
-
-		
-		CommandLine command = new CommandLine("/usr/local/bin/node");
-		command.addArgument("/Applications/Appium 2.app/Contents/Resources/app/node_modules/appium/build/lib/main.js", false);
+		CommandLine command = new CommandLine("/usr/local/bin/studio");
+		command.addArgument("/Applications/Appium.app/Contents/Resources/app/node_modules/appium/bin/appium.js", false);
 		//		CommandLine command = new CommandLine("/Applications/Appium.app/Contents/Resources/node/bin/node");
 		//		command.addArgument("/Applications/Appium.app/Contents/Resources/node_modules/appium/bin/appium.js", false);
 
@@ -132,7 +146,7 @@ public class AppiumFunctions extends Drivers{
 		command.addArgument("--address", false);
 		command.addArgument("127.0.0.1");
 		command.addArgument("--port", false);
-		command.addArgument("4729");	
+		command.addArgument("4727");	
 		command.addArgument("--no-reset", false);
 		command.addArgument("--log-level", false);
 		command.addArgument("error");
@@ -143,12 +157,12 @@ public class AppiumFunctions extends Drivers{
 		try {
 			executor.execute(command, resultHandler);
 			Thread.sleep(5000);
+			System.out.println("appium server started");
 		} catch (ExecuteException e) {
 			System.out.println("Appium Server Not Yet Started");
 		} catch (IOException e) {
 			System.out.println("Appium Server Not Yet Started");
 		}
-	
 	}
 	
 	public static void ReLaunchApp() throws Exception{
@@ -395,67 +409,61 @@ public class AppiumFunctions extends Drivers{
     		
     	//killADB();
     	//	AppiumServerStop();
-    		//AppiumServerStart();
+    	//	AppiumServerStart();
     		
     		DeviceStatus device_status = new DeviceStatus();
     		int Cap = device_status.Device_Status();
     		
-    	//	try {
-    			
+    //	try {  			
     			String[][] capabilitydata = read_excel_data.exceldataread("Capabilities");
     			DesiredCapabilities capabilities = new DesiredCapabilities();
     			
     			/* --- Start Android Device Capabilities --- */
     			if(Cap == 2){
-    				capabilities.setCapability(capabilitydata[1][0], capabilitydata[1][Cap]);
+    			//	capabilities.setCapability(capabilitydata[1][0], capabilitydata[1][Cap]);
     				capabilities.setCapability(capabilitydata[2][0], capabilitydata[2][Cap]); 
     				capabilities.setCapability(capabilitydata[3][0], capabilitydata[3][Cap]);
     				capabilities.setCapability(capabilitydata[7][0], capabilitydata[7][Cap]); 
     				capabilities.setCapability(capabilitydata[9][0], capabilitydata[9][Cap]);
-    				capabilities.setCapability(capabilitydata[10][0],capabilitydata[10][Cap]);
-    				capabilities.setCapability(capabilitydata[12][0],capabilitydata[12][Cap]);
-    		capabilities.setCapability("appActivity","com.weather.Weather.splash.SplashScreenActivity");
-    				//capabilities.setCapability("appActivity","com.weather.android.daybreak.MainActivity");
-    			//	capabilities.setCapability("automationName","UiAutomator2");
-    				System.out.println("app : "+capabilitydata[10][Cap]);
+    			//	capabilities.setCapability(capabilitydata[10][0],capabilitydata[10][Cap]);
+    			//	capabilities.setCapability(capabilitydata[12][0],capabilitydata[12][Cap]);
+    		
+    	capabilities.setCapability("appActivity","com.weather.Weather.app.SplashScreenActivity");
+    		//	capabilities.setCapability("appActivity","com.weather.android.daybreak.MainActivity");
+    			//scapabilities.setCapability("automationName","UiAutomator2");
+    			//	System.out.println("app : "+capabilitydata[10][Cap]);
     				capabilities.setCapability(capabilitydata[13][0],capabilitydata[13][Cap]);
     				//capabilities.setCapability(capabilitydata[14][0],capabilitydata[14][Cap]);
     				
-    				Thread.sleep(1000);
-    				
+    				Thread.sleep(5000);
+    			
     				Ad = new AndroidDriver(new URL(capabilitydata[15][Cap]), capabilities);
-    				Thread.sleep(3000);
+    				Thread.sleep(50000);
+    				
+    				/* ---End Android Device Capabilities --- */
+        			Ad.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+        			//####added ths to handle allow button			
+        			clickONNext();
+        		    ClickonIUnderstand();
+            		clickOnAllow();		
+        			Thread.sleep(10000);
+        			System.out.println("Capabilities have been launched  with fullreset ");
     			}
-    			/* ---End Android Device Capabilities --- */
-    			Ad.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    			//####added ths to handle allow button
-    			Thread.sleep(2000);
-    			
-    			try{
-    				if((Ad.findElementById("com.android.packageinstaller:id/permission_allow_button").isDisplayed())){
-    					Ad.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
-    				}
-    			}catch(Exception e){
-    				System.out.println("Location already set");
-    			}
-    			
-    			clickONNext();
-    		    ClickonIUnderstand();
-        		clickOnAllow();
-        		 			//######
-    			try{
-    				// WelcomeAppLaunchCooredinates();
-    			}catch(Exception e){
-
-    				}
-    			System.out.println("Capabilities have been launched  with fullreset ");
-    			Thread.sleep(1000);
+    		
+    		
     		//} 
     		
-    		/*catch (Exception e) {
+    	//	catch (Exception e) {
     			System.out.println("Unable To Launch The Appium Capabilities");
-    		}*/
+    	//	}
     	}
+     	
+     	
+     	
+     	
+     	
+     	
+     	
      	public static void WelcomeAppLaunchCooredinates()
      	{
      		
@@ -487,6 +495,7 @@ public class AppiumFunctions extends Drivers{
     		try {
     			new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/ok_button")));
     		Ad.findElementById("com.weather.Weather:id/ok_button").click();	
+    	//	Thread.sleep(5000);
     	//	Thread.sleep(10000);
     		}
     		catch(Exception e) {
@@ -494,6 +503,7 @@ public class AppiumFunctions extends Drivers{
     			SwipeUp_Counter(1);
     			new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/ok_button")));
     			Ad.findElementById("com.weather.Weather:id/ok_button").click();	
+    			//Thread.sleep(5000);
     			System.out.println("video element clicked");
     			logStep("video element clicked");
     			//Thread.sleep(10000);
@@ -502,6 +512,7 @@ public class AppiumFunctions extends Drivers{
     				try {
     					new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/video_backdrop")));
     					Ad.findElementById("com.weather.Weather:id/video_backdrop").click();
+    					//Thread.sleep(5000);
     					System.out.println("video element clicked");
     	    			logStep("video element clicked");
 			}
@@ -546,11 +557,13 @@ public static void clickOnRadarMaps() throws Exception{
 }	
 public static void click_Todaydetails_element() throws Exception
 {
+		
 	try {
-		new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/details_button")));
-	Ad.findElementById("com.weather.Weather:id/details_button").click();
-	System.out.println("today details  element clicked");
-	logStep("today details element clicked");
+		new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/today_card_container")));
+		Ad.findElementById("com.weather.Weather:id/today_card_container").click();
+		System.out.println("today details  element clicked");
+		logStep("today details element clicked");
+	
 	}
 	catch(Exception e) {
 		try {
@@ -561,13 +574,28 @@ public static void click_Todaydetails_element() throws Exception
 			logStep("today details element clicked");
 		}
 		catch(Exception e1) {
-			new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/today_card_container")));
-		Ad.findElementById("com.weather.Weather:id/today_card_container").click();
-		System.out.println("today details  element clicked");
-		logStep("today details element clicked");
-		}
-	}	
+			try {
+				new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/details_button")));
+				Ad.findElementById("com.weather.Weather:id/details_button").click();
+				System.out.println("today details  element clicked");
+				logStep("today details element clicked");
+			}
+			catch(Exception e3) {
+				try{
+					new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/today_card_container")));
+						Ad.findElementById("com.weather.Weather:id/today_card_container").click();
+						System.out.println("today details  element clicked");
+						logStep("today details element clicked");
+			}
+			catch(Exception e4) {
+	
+			}
+		
 }
+		}
+	}
+}
+
 public static void click_SH_element() throws Exception
 {
 	try {
@@ -578,7 +606,7 @@ public static void click_SH_element() throws Exception
 	}
 	catch(Exception e) {
 		try {
-			SwipeUp_Counter(1);
+			Swipe_feed();
 		new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/card_dial_index2_item")));
 	 Ad.findElementById("com.weather.Weather:id/card_dial_index2_item").click();
 		System.out.println("outdoor details element clicked");
@@ -634,7 +662,7 @@ public static void click_Running_element() throws Exception
 		}
 		catch(Exception e) {
 			try {
-				SwipeUp_Counter(1);
+				Swipe_feed();
 				new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/health_activities_run")));
 				Ad.findElementById("com.weather.Weather:id/health_activities_run").click();
 				System.out.println("Running element clicked");
@@ -697,7 +725,7 @@ public static void click_Allergy_element() throws Exception
 	}
 	catch(Exception e) {
 		try {	
-			SwipeUp_Counter(1);
+			Swipe_feed();
 		new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/health_activities_allergy")));
 		Ad.findElementById("com.weather.Weather:id/health_activities_allergy").click();
 		System.out.println("Allergy element clicked");
@@ -740,8 +768,8 @@ public static void click_Airpollution_element() throws Exception
 			logStep("Air Quality element clicked");
 			}
 			catch(Exception e3) {
-				new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("om.weather.Weather:id/air_quality_pollutant_title")));
-				Ad.findElementById("om.weather.Weather:id/air_quality_pollutant_title").click();
+				new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/air_quality_pollutant_title")));
+				Ad.findElementById("com.weather.Weather:id/air_quality_pollutant_title").click();
 				System.out.println("Air Quality element clicked");
 				logStep("Air Quality element clicked");
 			}
@@ -806,20 +834,32 @@ public static void SwipeUp_Counter_feedcards(int Counter) throws Exception{
 	System.out.println("Scroll the app till"+ data[1][1] +" is displaying on the screen");
 	for(int i=1;i<=swipeup ;i++){
 		Swipe_feed();
+		Thread.sleep(5000);
 
-		if(i>15) {
+		if(i>10) {
+			//local
 			if(Functions.verifyElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout/android.widget.TextView"))){
-		//if(Ad.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout/android.widget.TextView").isDisplayed()){
-		//	if(text==true) {
+		//	server
+			//if(Functions.verifyElement(By.xpath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout/android.widget.TextView"))){
+			if(Ad.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout/android.widget.TextView").isDisplayed()){
+	//	if(text==true) {
+				//local
 				 copyRight = Ad.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout/android.widget.TextView").getAttribute("text");
-					if(copyRight.equalsIgnoreCase( data[1][1])) {
+			//server
+			//	copyRight = Ad.findElementByXPath("/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup/android.view.ViewGroup[2]/androidx.recyclerview.widget.RecyclerView/android.widget.LinearLayout/android.widget.TextView").getAttribute("text");
+				if(copyRight.equalsIgnoreCase( data[1][1])) {
 						System.out.println(copyRight +" text is displaying on the screen");
 						i=150;
 						break;	
 			}
 			}
 		}
+		}
+		
+		Thread.sleep(5000);
 		String ModuleName;
+		Thread.sleep(5000);
+
 		try {
 		if(Ad.findElementById("com.weather.Weather:id/header_title").isDisplayed()) {
 			try {
@@ -830,14 +870,14 @@ catch(Exception e) {
 }
 	System.out.println(ModuleName.toString() +" feed card is presented on the screen");
 	
-	if(ModuleName.toString().contains("Top Stories") ||ModuleName.toString().contains("Low Stories")) {
+	/*if(ModuleName.toString().contains("Top Stories") ||ModuleName.toString().contains("Low Stories") || ModuleName.toString().contains("Videos")) {
 		if(videoCount==0) {
 		AppiumFunctions.clickOnVideoElement();
 	AppiumFunctions.clickOnBackArrowElement();
-	Functions.closeInterstailads() ;
+	Functions.closeInterstailAds();
 	videoCount=1;
 		}
-		}
+		}*/
 	
 	/*if(ModuleName.toString().contains("More News")) {
 		if(MorNewsCount==0) {
@@ -849,52 +889,66 @@ catch(Exception e) {
 		}*/
 		
 	
-if(ModuleName.toString().contains("Maps") ||ModuleName.toString().contains("Thunderstorms possible") || ModuleName.toString().contains("Thunderstorms ending") || ModuleName.toString().contains("Thunderstorms starts")||ModuleName.toString().contains("Dry conditions") || ModuleName.toString().contains("Thunderstorms ending") || ModuleName.toString().contains("Thunderstorms starts")  || ModuleName.toString().contains("Rain possible") || ModuleName.toString().contains("Rain starts") ||  ModuleName.toString().contains("Rain ending")) {
-if(radarCount==0)
+if(ModuleName.toString().contains("Maps") ||ModuleName.toString().contains("Thunderstorms possible") || ModuleName.toString().contains("Thunderstorms ending") || ModuleName.toString().contains("Thunderstorms starts")||ModuleName.toString().contains("Dry conditions") || ModuleName.toString().contains("Thunderstorms ending") || ModuleName.toString().contains("Thunderstorms starts")  || ModuleName.toString().contains("Rain possible") || ModuleName.toString().contains("Thunderstorms likely") ||  ModuleName.toString().contains("Rain ending") ||  ModuleName.toString().contains("Thunderstorms likely") ||ModuleName.toString().contains("Thunderstorms beginning") ||ModuleName.toString().contains("Thunderstorms will continue")) {
+	//System.out.println(ModuleName.toString() +" feed card is presented on the screen");
+	if(radarCount==0)
 {
 	AppiumFunctions.clickOnRadarMaps();
 	AppiumFunctions.clickOnBackArrowElement();
-	Functions.closeInterstailads();
+	Functions.closeInterstailAds();
 	radarCount=1;
 }
 }
 if(ModuleName.toString().contains("Health & Activities")) {
 
-	if(BoatBeachCount==0) {
-	 AppiumFunctions.click_Boat_Beach_element();
-	  AppiumFunctions.clickOnBackArrowElement();
-	  BoatBeachCount=1;
+
+	if(AllergyCount==0) {
+		 AppiumFunctions.click_Allergy_element(); 
+		  AppiumFunctions.clickOnBackArrowElement();
+		   Thread.sleep(10000);
+		  Thread.sleep(5000);
+		  AllergyCount=1;
 	}
-	if(RunningCount==0) {
-	 AppiumFunctions.click_Running_element();
-	 AppiumFunctions.clickOnBackArrowElement();
-	 RunningCount=1;
-	}
+
 	
-	/*if(CofFluCount==0) {
+/*	if(RunningCount==0) {
+		 AppiumFunctions.click_Running_element();
+		 AppiumFunctions.clickOnBackArrowElement();
+		   Thread.sleep(10000);
+		 RunningCount=1;
+		}*/
+	
+
+	
+/*	if(CofFluCount==0) {
 	 AppiumFunctions.click_cold_Flu_element();
 	  AppiumFunctions.clickOnBackArrowElement();
+	   Thread.sleep(10000);
 	  Thread.sleep(5000);
 	  CofFluCount=1;
 	}
-	if(AllergyCount==0) {
-	 AppiumFunctions.click_Allergy_element(); 
-	  AppiumFunctions.clickOnBackArrowElement();
-	  Thread.sleep(5000);
-	  AllergyCount=1;
-}*/
+	if(BoatBeachCount==0) {
+		 AppiumFunctions.click_Boat_Beach_element();
+		  AppiumFunctions.clickOnBackArrowElement();
+		   Thread.sleep(10000);
+		  BoatBeachCount=1;
+		}*/
+
+}
 if(ModuleName.toString().contains("Today's Details") ) {
 	if(TodayDeatilsCount==0) {
 	AppiumFunctions.click_Todaydetails_element();
      AppiumFunctions.clickOnBackArrowElement_today();
+     Thread.sleep(10000);
      TodayDeatilsCount=1;
 	}
 }
 
-/*if(ModuleName.toString().contains("Air Quality")) {
+if(ModuleName.toString().contains("Air Quality")) {
 	if(AirQualityCount==0) {
  AppiumFunctions.click_Airpollution_element();
 AppiumFunctions.clickOnBackArrowElement();
+Thread.sleep(10000);
 AirQualityCount=1;
 	}
 }
@@ -903,26 +957,34 @@ if(ModuleName.toString().contains("Outdoor Conditions")) {
 	if( outdoorcount==0)
 	click_SH_element() ;
  AppiumFunctions.clickOnBackArrowElement();
- Thread.sleep(5000);
+ Thread.sleep(10000);
  outdoorcount=1;
  
-	}*/
+	}
 		
 		}
 }
-		}
+		
+
 		catch(Exception e) {
 			try {
 				Swipe_feed();
 			Ad.findElementById("com.weather.Weather:id/header_title").isDisplayed();
 			}
 			catch(Exception e1) {
+				try {
 				Swipe_feed();
+				Ad.findElementById("com.weather.Weather:id/header_title").isDisplayed();
+				}
+				catch(Exception e3) {
+					Swipe_feed();
+				}
 			}
 	
 			
 		}
-			}	
+		}
+	
 }
 public static void Swipe(){
 	Dimension dimensions = Ad.manage().window().getSize();//throwing exception
@@ -988,8 +1050,8 @@ public static void clickONNext() throws Exception{
 }
 public static void clickOnAllow() throws Exception{
 try {
-	new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.android.permissioncontroller:id/permission_allow_foreground_only_button")));
-	Ad.findElementById("com.android.permissioncontroller:id/permission_allow_foreground_only_button").click();
+	new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.android.packageinstaller:id/permission_allow_button")));
+	Ad.findElementById("com.android.packageinstaller:id/permission_allow_button").click();
 	//Thread.sleep(10000);
 }
 catch(Exception e) {
@@ -1010,7 +1072,6 @@ try {
 	new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/next_button_text")));
 	Ad.findElementById("com.weather.Weather:id/next_button_text").click();
 
-//Thread.sleep(10000);
 }
 catch(Exception e)
 {
@@ -1065,8 +1126,25 @@ public static void clickOnBackArrowElement_today() throws Exception
 		Ad.findElementById("com.weather.Weather:id/trending_up_navigation_icon").click();    
 	}
 	catch(Exception e) {
-		new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementByAccessibilityId("Navigate up")));
-		Ad.findElementByAccessibilityId("Navigate up").click();
+		try {
+		new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementById("com.weather.Weather:id/trending_up_navigation_icon")));
+		Ad.findElementById("com.weather.Weather:id/trending_up_navigation_icon").click();  
+		}catch(Exception e1) {
+			try {
+				new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementByAccessibilityId("Navigate up")));
+				Ad.findElementByAccessibilityId("Navigate up").click();
+
+			}
+			catch(Exception e3) {
+				try {
+					new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementByAccessibilityId("Navigate up")));
+					Ad.findElementByAccessibilityId("Navigate up").click();
+				}
+				catch(Exception e4) {
+			
+				}
+		}
+		}
 	}
 }
 public static void getFeedCardsListAndNavigateToThem(boolean includeDetailsPages) throws Exception {
@@ -1746,8 +1824,174 @@ catch(Exception e) {
 }
 
 
+public static void getIpaddress() {
+	Process p;
+	try {
+		File bashFile = new File(System.getProperty("user.dir") + "/getIpAddress.sh");
+		String[] cmd = { "/bin/sh", bashFile.getName() };
+
+		p = Runtime.getRuntime().exec(cmd);
+
+		BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+		String s;
+		while ((s = reader.readLine()) != null) {
+			System.out.println("Current IP Address of the system is : " + s);
+			logStep("Current IP Address of the system is : " + s);
+			current_IPAddress = s;
+		}
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		System.out.println("There is an exception while finding current MAC IP Address");
+		e.printStackTrace();
+	}
+
+}
+
+
+public static void settingProxyEnable(String type,String ipAddress,String portNumber) throws Exception{
+		//clicking connection option on settings app
+	clickRequiredEleemntononSettingsapp("Connections");	
+	Thread.sleep(8000);
+	//clicking wifi option
+	clickRequiredEleemntononSettingsapp("Wi-Fi");
+	Thread.sleep(8000);
+	//clicking on wifi name
+	clickRequiredEleemntononSettingsapp(smokeTestCases.CurrentWifiName);		
+	Thread.sleep(10000);
+	
+	//clicking on edit
+	try {
+	Ad.findElementById("android:id/button2").click();
+	Thread.sleep(10000);
+	}catch(Exception e) {
+		
+	}
+	//clicking on advaced option
+	try {
+		Ad.findElementById("com.android.settings:id/wifi_advanced_togglebox").click();
+		Thread.sleep(10000);
+	}catch(Exception e) {
+		
+	}    		
+	
+	//clicking on proxy fields drop down
+	Ad.findElementById("com.android.settings:id/proxy_settings").click();
+	Thread.sleep(10000);
+	//clicking on None option;
+	 Thread.sleep(10000);
+	 clickRequiredproxyOption(type);
+	Thread.sleep(8000);
+	enterIpAddressPortNumber(current_IPAddress, defaultPortNumber); 
+	Ad.findElementById("android:id/button1").click();
+	Thread.sleep(8000);
+	}
+
+public static void clickRequiredEleemntononSettingsapp(String name) throws Exception {
+	List<WebElement> searchelements=Ad.findElementsById("android:id/title");
+	for(WebElement search:searchelements) {
+		if(search.getText().contains(name)) {
+			search.click()  ; 				
+			Thread.sleep(5000);
+
+			break;
+			
+		}
+	}
+}
+
+public static void clickRequiredproxyOption(String proxyOption) throws Exception {
+	List<WebElement> searcheleme=Ad.findElementsById("android:id/text1");
+	for(WebElement search:searcheleme) {
+		if(search.getText().contains(proxyOption)) {
+			search.click();
+			Thread.sleep(5000);
+			break;
+		}
+	}
+	
+}
+
+
+public static void enterIpAddressPortNumber(String ipAddress, String portNumber) throws Exception {
+	
+	Ad.findElementById("com.android.settings:id/proxy_hostname").clear();
+	Thread.sleep(10000);
+	Ad.findElementById("com.android.settings:id/proxy_hostname").sendKeys(ipAddress);
+	Ad.findElementById("com.android.settings:id/proxy_port").clear();
+	Thread.sleep(10000);
+	Ad.findElementById("com.android.settings:id/proxy_port").sendKeys(portNumber);
+}
+
+@SuppressWarnings("rawtypes")
+public static void LaunchSettingsAppWithFullReset() throws Exception{
+		
+	//killADB();
+	//	AppiumServerStop();
+	//	AppiumServerStart();
+		
+		DeviceStatus device_status = new DeviceStatus();
+		int Cap = device_status.Device_Status();
+		
+//	try {  			
+		//File app = new File(“/Users/aswinikumar/Downloads/e449d6f73bc1b22577ce2eeebe6083887a4ec8bb729eef9d650517b602f88aef.apk”);
+			//String[][] capabilitydata = read_excel_data.exceldataread("Capabilities");
+			DesiredCapabilities capabilities = new DesiredCapabilities();
+			
+			/* --- Start Android Device Capabilities --- */
+
+				//capabilities.setCapability(capabilitydata[1][0], capabilitydata[1][Cap]);
+				capabilities.setCapability("platformName", "Android"); 
+				capabilities.setCapability("platformVersion", "11.0");
+				capabilities.setCapability("deviceName", "Samsung"); 
+				capabilities.setCapability("noReset","true");
+			//	capabilities.setCapability("app",app.getAbsolutePath() );
+				capabilities.setCapability("appPackage","com.android.settings");
+	         capabilities.setCapability("appActivity","com.android.settings.Settings");
+			//	capabilities.setCapability("appActivity","dev.firebase.appdistribution.main.MainActivity");
+	capabilities.setCapability("automationName","UiAutomator2");  			
+				capabilities.setCapability("newCommandTimeout","10000");
+				capabilities.setCapability("autoLaunch","true");    				
+				Thread.sleep(5000);    				
+				Ad = new AndroidDriver(new URL("http://127.0.0.1:4727/wd/hub"), capabilities);
+				Thread.sleep(50000);
+				  /* ---End Android Device Capabilities --- */
+ 			Ad.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+ 			System.out.println("Capabilities have been launched  with fullreset ");
+	
+		
+		
+		//} 
+		
+		//catch (Exception e) {
+			System.out.println("Unable To Launch The Appium Capabilities");
+		//}
+	}
+	
+
+
+public static void UnInstallApk() throws Exception{
+	DeviceStatus device_status = new DeviceStatus();
+	int Cap = device_status.Device_Status();
+
+	String[][] paths = read_excel_data.exceldataread("Paths");
+	String adbPath = paths[15][Cap];
+
+	//System.out.println("adbPath "+ adbPath);
+
+	System.out.println("Uninstall the APP and Installing");
+//	/usr/bin/env bash
+	String[] uninstall ={"/usr/bin/env bash", " adb uninstall com.weather.Weather"};
+	
+	Runtime.getRuntime().exec(uninstall);
+	System.out.println("Uninstall completed");
+	Thread.sleep(5000);
+	Thread.sleep(5000);
+}
+
 }
                           
+
+    
                  
 
                      
