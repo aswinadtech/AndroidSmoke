@@ -360,7 +360,7 @@ public class AppiumFunctions extends Drivers{
 	//launch app with full reset
 	
 	
-	@SuppressWarnings("rawtypes")
+	/*@SuppressWarnings("rawtypes")
 	public static void LaunchAppWithFullReset(String Reset) throws Exception{
 		
 		
@@ -402,7 +402,7 @@ public class AppiumFunctions extends Drivers{
 			catch (Exception e) {
 			System.out.println("Unable To Launch The Appium Capabilities");
 		}
-	}
+	}*/
 	
      	@SuppressWarnings("rawtypes")
 	   public static void LaunchAppWithFullReset() throws Exception{
