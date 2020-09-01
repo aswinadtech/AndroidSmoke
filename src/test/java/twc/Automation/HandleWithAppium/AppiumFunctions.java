@@ -395,7 +395,7 @@ public class AppiumFunctions extends Drivers{
     		
     	//killADB();
     	//	AppiumServerStop();
-    		AppiumServerStart();
+    		//AppiumServerStart();
     		
     		DeviceStatus device_status = new DeviceStatus();
     		int Cap = device_status.Device_Status();
@@ -414,7 +414,7 @@ public class AppiumFunctions extends Drivers{
     				capabilities.setCapability(capabilitydata[9][0], capabilitydata[9][Cap]);
     				capabilities.setCapability(capabilitydata[10][0],capabilitydata[10][Cap]);
     				capabilities.setCapability(capabilitydata[12][0],capabilitydata[12][Cap]);
-    	//	capabilities.setCapability("appActivity","com.weather.Weather.splash.SplashScreenActivity");
+    		capabilities.setCapability("appActivity","com.weather.Weather.splash.SplashScreenActivity");
     				//capabilities.setCapability("appActivity","com.weather.android.daybreak.MainActivity");
     			//	capabilities.setCapability("automationName","UiAutomator2");
     				System.out.println("app : "+capabilitydata[10][Cap]);
