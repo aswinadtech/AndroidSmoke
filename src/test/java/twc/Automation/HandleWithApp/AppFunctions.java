@@ -2162,7 +2162,6 @@ public static void verify_adpresent_onvideo_page(String excel_sheet_name) throws
 	}
 	
 	
-	
 	public static void clickOnviewMore() {
 		//View More Options Button
 	Functions.verifyElement(ByAccessibilityId("View More Options Button"));
@@ -2177,6 +2176,7 @@ public static void verify_adpresent_onvideo_page(String excel_sheet_name) throws
 			
 		}
 	}
+	
 	
 	
 	private static By ByAccessibilityId(String string) {
