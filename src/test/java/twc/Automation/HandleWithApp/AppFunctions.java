@@ -2162,19 +2162,22 @@ public static void verify_adpresent_onvideo_page(String excel_sheet_name) throws
 	}
 	
 	
+	
 	public static void clickOnviewMore() {
-	Functions.verifyElement(ByAccessibilityId("View More"));
+		//View More Options Button
+	Functions.verifyElement(ByAccessibilityId("View More Options Button"));
 		try {
 		System.out.println("Clicking on View More");
 		logStep("Clicking on View More");
-		new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementByAccessibilityId("View More")));
-		Ad.findElementByAccessibilityId("View More").click();
+		new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementByAccessibilityId("View More Options Button")));
+		Ad.findElementByAccessibilityId("View More Options Button").click();
 		//Thread.sleep(5000);
 		}
 		catch(Exception e) {
 			
 		}
 	}
+	
 	
 	private static By ByAccessibilityId(String string) {
 		// TODO Auto-generated method stub
