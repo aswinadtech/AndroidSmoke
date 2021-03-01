@@ -493,6 +493,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); 
     	  Functions.clickdailydetails();
+		  Thread.sleep(5000);
+		attachScreen();
     	  Functions.clickongotit(); 
     	  CharlesFunctions.ExportSession(); 
     	  Functions.verifyingdailydetailiu(); 
@@ -519,6 +521,8 @@ public class smokeTestCases extends Drivers {
     	  println("================= Verifying new daily details day2 ad call tescase Started========================="
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); Functions.clickonday2();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu();
     	  System.out.
     	  println("================= Verifying new daily details day1 ad call tescase End ========================="
@@ -534,6 +538,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); //
     	  Functions.finding_newDailyBidadcall_day2(); Functions.clickonday3();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu();
     	  System.out.
     	  println("================= Verifying new daily details day3 ad call tescase End ========================="
@@ -548,6 +554,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); //
     	  Functions.finding_newDailyBidadcall_day2(); Functions.clickonday4();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu();
     	  System.out.
     	  println("================= Verifying new daily details day4 ad call tescase End ========================="
@@ -562,6 +570,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); //
     	  Functions.finding_newDailyBidadcall_day2(); Functions.clickonday5();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu();
     	  System.out.
     	  println("================= Verifying new daily details day5 ad call tescase End ========================="
@@ -576,6 +586,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); //
     	  Functions.finding_newDailyBidadcall_day2(); Functions.clickonday6();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu();
     	  System.out.
     	  println("================= Verifying new daily details day6 ad call tescase End ========================="
@@ -590,6 +602,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); //
     	  Functions.finding_newDailyBidadcall_day2(); Functions.clickonday7();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu();
     	  System.out.
     	  println("================= Verifying new daily details day7 ad call tescase End ========================="
@@ -604,6 +618,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); //
     	  Functions.finding_newDailyBidadcall_day2(); Functions.clickonday8();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu1();
     	  System.out.
     	  println("================= Verifying new daily details day8 ad call tescase End ========================="
@@ -618,6 +634,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); //
     	  Functions.finding_newDailyBidadcall_day2(); Functions.clickonday9();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu1();
     	  System.out.
     	  println("================= Verifying new daily details day9 ad call tescase End ========================="
@@ -632,6 +650,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); //
     	  Functions.finding_newDailyBidadcall_day2(); Functions.clickonday10();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu1();
     	  System.out.
     	  println("================= Verifying new daily details day10 ad call tescase End ========================="
@@ -646,6 +666,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); //
     	  Functions.finding_newDailyBidadcall_day2(); Functions.clickonday11();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu1();
     	  System.out.
     	  println("================= Verifying new daily details day11 ad call tescase End ========================="
@@ -660,6 +682,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); //
     	  Functions.finding_newDailyBidadcall_day2(); Functions.clickonday12();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu1();
     	  System.out.
     	  println("================= Verifying new daily details day12 ad call tescase End ========================="
@@ -674,6 +698,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); //
     	  Functions.finding_newDailyBidadcall_day2(); Functions.clickonday13();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu1();
     	  System.out.
     	  println("================= Verifying new daily details day13 ad call tescase End ========================="
@@ -688,6 +714,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); //
     	  Functions.finding_newDailyBidadcall_day2(); Functions.clickonday14();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu1();
     	  System.out.
     	  println("================= Verifying new daily details day14 ad call tescase End ========================="
@@ -702,6 +730,8 @@ public class smokeTestCases extends Drivers {
     	  ); CharlesFunctions.ClearSessions();
     	  CharlesFunctions.startSessionBrowserData(); //
     	  Functions.finding_newDailyBidadcall_day2(); Functions.clickonday15();
+		  Thread.sleep(5000);
+		attachScreen();
     	  CharlesFunctions.ExportSession(); Functions. verifyingdailydetailsiu2();
     	  System.out.
     	  println("================= Verifying new daily details day15 ad call tescase End ========================="
