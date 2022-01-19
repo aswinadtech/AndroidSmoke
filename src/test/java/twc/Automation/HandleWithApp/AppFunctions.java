@@ -328,7 +328,7 @@ public class AppFunctions extends Drivers{
 		//CharlesFunctions.startSessionBrowserData();
 		//AppiumFunctions.LaunchApp();
 		Ad.quit();
-		//AppiumFunctions.LaunchAppWithFullReset("false");
+		AppiumFunctions.LaunchAppWithFullReset("false");
 		//AppiumFunctions.LaunchApp();
 		//loginModule.login();
 		Thread.sleep(8000);
@@ -2133,12 +2133,12 @@ public static void verify_adpresent_onvideo_page(String excel_sheet_name) throws
     public static void click_hourly_element() throws Exception
 	{
 	try {
-		new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementByAccessibilityId("Hourly")));
-		Ad.findElementByAccessibilityId("Hourly").click();
+		new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementByAccessibilityId("Hourly Tab")));
+		Ad.findElementByAccessibilityId("Hourly Tab").click();
 	}
 	catch(Exception e) {
-		new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementByAccessibilityId("Hourly")));
-		Ad.findElementByAccessibilityId("Hourly").click();
+		new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementByAccessibilityId("Hourly Tab")));
+		Ad.findElementByAccessibilityId("Hourly Tab").click();
 	}
 	}
 	public static void click_daily_element() throws Exception
@@ -2163,21 +2163,18 @@ public static void verify_adpresent_onvideo_page(String excel_sheet_name) throws
 	
 	
 	public static void clickOnviewMore() {
-		//View More Options Button
-	Functions.verifyElement(ByAccessibilityId("View More Options Button"));
+	Functions.verifyElement(ByAccessibilityId("View More"));
 		try {
 		System.out.println("Clicking on View More");
 		logStep("Clicking on View More");
 		new WebDriverWait(Ad, Functions.maxTimeout).until(ExpectedConditions.elementToBeClickable(Ad.findElementByAccessibilityId("View More Options Button")));
 		Ad.findElementByAccessibilityId("View More Options Button").click();
-		//Thread.sleep(5000);
+		Thread.sleep(5000);
 		}
 		catch(Exception e) {
 			
 		}
 	}
-	
-	
 	
 	private static By ByAccessibilityId(String string) {
 		// TODO Auto-generated method stub
@@ -2357,17 +2354,21 @@ public static void gettingApkVersion() throws Exception{
 		//cliking View more Button	
 	try {
      	clickOnviewMore();
+     	attachScreen();
 	}
 	catch(Exception e) {
 	 	clickOnviewMore();
+	 	attachScreen();
 	}
 	try {
      	//cliking on aboutthisapp
      	clickOnAboutthisapp();
+     	attachScreen();
 	}
 	catch(Exception e) {
 		//cliking on aboutthisapp
      	clickOnAboutthisapp();
+     	attachScreen();
 	}
 	try {
      	apkVersion=Ad.findElementById("com.weather.Weather:id/about_version").getText();
@@ -2403,6 +2404,12 @@ public static void selectingRequiredUserGroup(String usergroup) throws Exception
      	clickOnUserGroups();
      	enterRequiredUserGroup(usergroup);
 	}
+
+
+public static void selectingRequiredUserGroups(String usergroup) throws Exception{
+	
+ 	enterRequiredUserGroup(usergroup);
+}
 
 
 public static void enablingBranch(String branchName) throws Exception{
