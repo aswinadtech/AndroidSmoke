@@ -611,7 +611,7 @@ public void Smoke_Test_Verifying_newdailydetails_day1adcall_FTL() throws Excepti
 			 }
 			  
 			  /*
-			   * This method validate fcnd custom parameter of daily details call
+			   * This method validates fcnd custom parameter of daily details call
 			   */
 			   @Test(priority = 252, enabled = true)
 			  @Description("Validating 'dt' custom parameter of daily details call ")
